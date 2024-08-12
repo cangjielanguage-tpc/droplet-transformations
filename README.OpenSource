@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "glide-transformations'",
+        "License": "Apache-2.0 license",
+        "License File": "https://github.com/wasabeef/glide-transformations/blob/main/LICENSE",
+        "Version Number": "v4.3.0",
+        "Owner": "wasabeef"
+        "Upstream URL": "https://github.com/wasabeef/glide-transformations",
+        "Description": "An Android transformation library providing a variety of image transformations for Glide."
+    }
+]
