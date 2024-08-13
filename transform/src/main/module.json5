@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "transform",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}
