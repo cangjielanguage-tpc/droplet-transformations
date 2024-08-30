@@ -5,7 +5,7 @@
 <p align="center">
 <img alt="" src="https://img.shields.io/badge/release-v0.0.1-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/build-pass-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjc-v0.53.4-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/cjc-v0.53.8-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/project-open-brightgreen" style="display: inline-block;" />
 </p>
 
@@ -39,7 +39,8 @@ droplet-transformations是一个依赖于droplet的图像转换库(必须搭配d
 ├── doc                                       #文档目录
 │   └── feature_api.md                        #API接口文档
 ├── transform                                 #源码目录 
-└── entry                                     #示例目录
+├── entry                                     #示例目录
+└── hvigor                                    #构建工具目录
 ```
 
 ### 接口说明
@@ -145,7 +146,12 @@ load成功
 
 ## 约束与限制
 
-当前基于 OpenHarmony Cangjie Mobile B100 版本实现的
+当前基于 HarmonyOS NEXT Developer Beta5 版本实现的
+
+IDE : DevEco Studio NEXT Developer Beta5(5.0.3.700)
+
+Plugins (SDK) : DevEco Studio NEXT Developer Beta5-Cangjie Plugin(5.0.3.700)
+
 
 ## 开源协议
 
