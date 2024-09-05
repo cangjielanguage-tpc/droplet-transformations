@@ -105,12 +105,7 @@ class TestCase {
         transformCate: Option<PixelMapTransformation>.Some(BrightnessFilterTransformation(0.6)),
         strategy: Option<DiskCacheStrategy>.Some(DiskCacheStrategyDATA()),
     )
-
-    public func onAppear(): Unit {
-    }
-
-    public func onDisappear(): Unit {
-    }
+    
 
     let scroller = Scroller()
 
@@ -155,7 +150,7 @@ Plugins (SDK) : DevEco Studio NEXT Developer Beta5-Cangjie Plugin(5.0.3.700)
 
 ## 开源协议
 
-本项目基于 [Google License](./LICENSE) ，请自由的享受和参与开源。
+本项目基于 [Apache License](./LICENSE) ，请自由的享受和参与开源。
 
 ## 参与贡献
 

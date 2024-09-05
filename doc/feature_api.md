@@ -266,12 +266,7 @@ class TestCase {
         transformCate: Option<PixelMapTransformation>.Some(BrightnessFilterTransformation(0.6)),
         strategy: Option<DiskCacheStrategy>.Some(DiskCacheStrategyDATA()),
     )
-
-    public func onAppear(): Unit {
-    }
-
-    public func onDisappear(): Unit {
-    }
+    
 
     let scroller = Scroller()
 
