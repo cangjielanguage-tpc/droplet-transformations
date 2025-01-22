@@ -9,44 +9,43 @@ import ohos.state_macro_manage.*
 @Entry
 @Component
 class TestCase {
+    let scroller = Scroller()
 
     @State
-    var text: String = ""
+    var flag: Bool = false
 
-    @State
-    var textTmp: String = ""
-
-    @State
     var option: DropletRequestOption = DropletRequestOption(
-        loadSrc: "https://xxxxxx.jpg", //这里填写一张网络图片地址
-        transformCate: Option<PixelMapTransformation>.Some(BrightnessFilterTransformation(0.6)),
-        strategy: Option<DiskCacheStrategy>.Some(DiskCacheStrategyDATA()),
+        loadSrc: "https://xxxx.jpg",
+        strategy: DiskCacheStrategyDATA(),
+        transformCate: BrightnessFilterTransformation(0.6)
     )
 
-    public func onAppear(): Unit {
+    protected open func aboutToAppear() {
+        Droplet.get(globalAbilityContext.getOrThrow()).onAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致,
+        //组件没设置label,就调用空参的onAppear
     }
 
-    public func onDisappear(): Unit {
+    protected open func aboutToDisappear() {
+        Droplet.get(globalAbilityContext.getOrThrow()).onDisAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致
+        //组件没设置label,就调用空参的onDisAppear
     }
-
-    let scroller = Scroller()
 
     func build() {
         Column(30) {
             Scroll(this.scroller) {
                 Column() {
+                    Button("加载").onClick {
+                        flag = true
+                    }
+
+                    if (flag) {
                         DropletImageComponent(
-                            globalContext: globalAbilityContext,
-                            option: option,
-                            beginFn: {=>
-                                text = "begin"
-                                AppLog.error("droplet hhs begin")},
-                            endFn: {=>
-                                textTmp = "end"
-                                AppLog.error("droplet hhs end")}
+                            globalContext: globalAbilityContext.getOrThrow(),
+                            dropletOption: option
                         )
                     }
-             }.width(100.percent)
+                }.width(100.percent)
+            }
         }
     }
 }
