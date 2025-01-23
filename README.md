@@ -5,7 +5,7 @@
 <p align="center">
 <img alt="" src="https://img.shields.io/badge/release-v0.0.1-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/build-pass-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjc-v0.53.8-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/cjc-v0.53.17-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/project-open-brightgreen" style="display: inline-block;" />
 </p>
 
@@ -58,7 +58,7 @@ droplet-transformations是一个依赖于droplet的图像转换库(必须搭配d
 
 1.下载测试工程与git子模块
 
-git clone --single-branch --recursive https://gitcode.com/Cangjie-TPC/droplet-transformations.git
+git clone -b 分支名 --single-branch --recursive https://gitcode.com/Cangjie-TPC/droplet-transformations.git
 
 2. 如需切换droplet分支, 进入transform/third_party/droplet目录自行操作
 
@@ -92,42 +92,47 @@ import transform.*
 @Entry
 @Component
 class TestCase {
-
-    @State
-    var text: String = ""
-
-    @State
-    var textTmp: String = ""
-
-    @State
-    var option: DropletRequestOption = DropletRequestOption(
-        loadSrc: "https://xxxxxxx.jpg", //这里填写一张网络图片地址
-        transformCate: Option<PixelMapTransformation>.Some(BrightnessFilterTransformation(0.6)),
-        strategy: Option<DiskCacheStrategy>.Some(DiskCacheStrategyDATA()),
-    )
-    
-
     let scroller = Scroller()
+
+    @State
+    var flag: Bool = false
+
+    var option: DropletRequestOption = DropletRequestOption(
+        loadSrc: "http://xxxxxxx.jpg",
+        strategy: DiskCacheStrategyDATA(),
+        transformCate: BrightnessFilterTransformation(0.6)
+    )
+
+    protected open func aboutToAppear() {
+        Droplet.get(globalAbilityContext.getOrThrow()).onAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致,
+        //组件没设置label,就调用空参的onAppear
+    }
+
+    protected open func aboutToDisappear() {
+        Droplet.get(globalAbilityContext.getOrThrow()).onDisAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致
+        //组件没设置label,就调用空参的onDisAppear
+    }
 
     func build() {
         Column(30) {
             Scroll(this.scroller) {
                 Column() {
+                    Button("加载").onClick {
+                        flag = true
+                    }
+
+                    if (flag) {
                         DropletImageComponent(
-                            globalContext: globalAbilityContext,    //注意这个globalAbilityContext是在main_ability中获取到的context
-                            option: option,
-                            beginFn: {=>
-                                text = "begin"
-                                AppLog.error("droplet hhs begin")},
-                            endFn: {=>
-                                textTmp = "end"
-                                AppLog.error("droplet hhs end")}
+                            globalContext: globalAbilityContext.getOrThrow(),
+                            dropletOption: option,
                         )
                     }
-             }.width(100.percent)
+                }.width(100.percent)
+            }
         }
     }
 }
+
 
 ```
 
@@ -141,11 +146,9 @@ load成功
 
 ## 约束与限制
 
-当前基于 HarmonyOS NEXT Developer Beta5 版本实现的
+IDE : DevEco Studio 5.0.1 Release (5.0.5.315)
 
-IDE : DevEco Studio NEXT Developer Beta5(5.0.3.700)
-
-Plugins (SDK) : DevEco Studio NEXT Developer Beta5-Cangjie Plugin(5.0.3.700)
+Plugins (SDK) : DevEco Studio-Cangjie Plugin Beta1(5.0.5.306.117)
 
 
 ## 开源协议
