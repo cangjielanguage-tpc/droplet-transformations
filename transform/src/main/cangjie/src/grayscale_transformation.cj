@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2023-2024. All rights resvered.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2023-2024. All rights reserved.
  */
 
 package transform
@@ -16,7 +16,7 @@ public class GrayscaleTransformation <: PixelMapTransformationBridge {
         nParam = 4
     }
 
-    protected func transform(toTransform: PixelMap, outWidth: Int64, outHeight: Int64): PixelMap {
+    protected func transform(toTransform: PixelMap, _: Int64, _: Int64): PixelMap {
         let arr: Array<UInt8> = Array<UInt8>(Int64(toTransform.getPixelBytesNumber()), item: 0)
         toTransform.readPixelsToBuffer(arr)
         var info = toTransform.getImageInfo()
