@@ -2,7 +2,7 @@
   [target.aarch64-linux-ohos]
     compile-option = "-B \"${DEVECO_CANGJIE_HOME}/compiler/third_party/llvm/bin\" -B \"${DEVECO_CANGJIE_HOME}/musl/usr/lib/aarch64-linux-ohos\" -L \"${DEVECO_CANGJIE_HOME}/musl/usr/lib/aarch64-linux-ohos\" -L \"${DEVECO_CANGJIE_HOME}/build/linux_ohos_aarch64_llvm/openssl\" --sysroot \"${DEVECO_CANGJIE_HOME}/musl\""
     [target.aarch64-linux-ohos.bin-dependencies]
-      path-option = [ "${AARCH64_LIBS}", "${AARCH64_MACRO_LIBS}", "${AARCH64_SYSTEM_LIBS}" ]
+      path-option = [ "${AARCH64_LIBS}", "${AARCH64_MACRO_LIBS}" ]
       [target.aarch64-linux-ohos.bin-dependencies.package-option]
   [target.x86_64-linux-ohos]
     compile-option = "-B \"${DEVECO_CANGJIE_HOME}/compiler/third_party/llvm/bin\" -B \"${DEVECO_CANGJIE_HOME}/musl/usr/lib/x86_64-linux-ohos\" -L \"${DEVECO_CANGJIE_HOME}/musl/usr/lib/x86_64-linux-ohos\" -L \"${DEVECO_CANGJIE_HOME}/build/linux_ohos_x86_64_llvm/openssl\" --sysroot \"${DEVECO_CANGJIE_HOME}/musl\""
@@ -22,7 +22,7 @@
     version = "1.0.0"
 
 [package]
-  cjc-version = "0.53.4"
+  cjc-version = "0.53.18"
   compile-option = ""
   description = "CangjieUI Application"
   link-option = ""
