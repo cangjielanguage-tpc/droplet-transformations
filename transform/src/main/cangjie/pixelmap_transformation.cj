@@ -11,16 +11,13 @@ internal import droplet.DropletResource
 internal import droplet.AnyKey
 internal import droplet.MD5
 internal import droplet.Utils
-internal import droplet.CommonBitmap
 internal import droplet.DropletException
 internal import droplet.PixelMapResource
 internal import droplet.PixelMapTransformation
+internal import std.fs.Path as FSPath
+internal import std.fs.*
 
 foreign func tfTask(pOut: CPointer<UInt8>, pIn: CPointer<UInt8>, pparam: CPointer<Float32>): UInt32
-
-foreign func malloc(size: UIntNative): CPointer<Unit>
-
-foreign func free(ptr: CPointer<Unit>): Unit
 
 foreign func getBrightIdx(): UInt32
 

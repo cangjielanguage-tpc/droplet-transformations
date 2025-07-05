@@ -75,7 +75,7 @@ public class CommonBitmap {
     file.close()
   }
 
-  public func allocCdata() {
+  func allocCdata() {
     ptr = unsafe { malloc(UIntNative(len)) }
     cdata = unsafe { CPointer<UInt8>(ptr) }
   }
@@ -114,7 +114,7 @@ public class CommonBitmap {
        }
   }
 
-  public func release() {
+  func release() {
     unsafe { free(ptr)}
   }
 

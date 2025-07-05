@@ -28,8 +28,8 @@ public class ContrastFilterTransformation <: PixelMapTransformationBridge {
         var info = toTransform.getImageInfo()
         var w = info.size.width
         var h = info.size.height
-        var bitmap = CommonBitmap(w, h, 4, arr)
-        var bitmapOut = CommonBitmap(w, h, 4)
+        var bitmap = CommonBitmapTrans(w, h, 4, arr)
+        var bitmapOut = CommonBitmapTrans(w, h, 4)
         bitmapOut.allocCdata()
 
         puParam = unsafe { malloc(UIntNative(maxNumParam * szofParam)) }
