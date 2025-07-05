@@ -1,11 +1,11 @@
 [
     {
-        "Name": "glide'",
-        "License": "ohther",
-        "License File": "https://gitcode.com/Cangjie-TPC/droplet/blob/develop/LICENSE",
-        "Version Number": "v4.14.2",
-        "Owner": "bumptech"
-        "Upstream URL": "https://github.com/bumptech/glide",
-        "Description": "An image loading and caching library for Android focused on smooth scrolling"
+        "Name": "glide-transformations'",
+        "License": "Apache-2.0 license",
+        "License File": "https://github.com/wasabeef/glide-transformations/blob/main/LICENSE",
+        "Version Number": "v4.3.0",
+        "Owner": "wasabeef"
+        "Upstream URL": "https://github.com/wasabeef/glide-transformations",
+        "Description": "An Android transformation library providing a variety of image transformations for Glide."
     }
 ]
