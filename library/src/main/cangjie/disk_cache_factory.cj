@@ -1,0 +1,35 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2023-2024. All rights reserved.
+ */
+ 
+package droplet
+
+public open class DiskLruCacheFactory <: DiskCacheFactory {
+    private var diskCacheSize: Int64 = 0
+    private var cacheDirectoryGetter: CacheDirectoryGetter
+    
+    public init(diskCacheFolder: String, diskCacheSize: Int64) {
+        this(DefaultCacheDirectoryGetter(diskCacheFolder), diskCacheSize);
+    }
+
+    public init(diskCacheFolder: String, diskCacheName: String, diskCacheSize: Int64) {
+        this(DefaultCacheDirectoryGetter2(diskCacheFolder, diskCacheName), diskCacheSize);
+    }
+
+    public init(cacheDirectoryGetter: CacheDirectoryGetter, diskCacheSize: Int64) {
+        this.diskCacheSize = diskCacheSize;
+        this.cacheDirectoryGetter = cacheDirectoryGetter;
+    }
+
+    public override func build(): DiskCache {
+        var cacheDir: DropletFile = cacheDirectoryGetter.getCacheDirectory();
+
+        let flagA = cacheDir.isDirectory()
+        let flagB = cacheDir.mkdirs()
+
+        if (flagA || flagB) {
+            return DiskLruCacheWrapper.create(cacheDir, diskCacheSize);
+        }
+        throw Exception("dropleterror: dropletfile create error")
+    }
+}

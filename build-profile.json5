@@ -5,8 +5,15 @@
       {
         "name": "default",
         "signingConfig": "default",
-        "compatibleSdkVersion": "5.0.0(12)",
+        "targetSdkVersion": "5.1.0(18)",
+        "compatibleSdkVersion": "5.1.0(18)",
         "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
       }
     ],
     "buildModeSet": [
@@ -30,6 +37,14 @@
           ]
         }
       ]
+    },
+    {
+      "name": "library",
+      "srcPath": "./library"
+    },
+    {
+      "name": "droplet_ffi",
+      "srcPath": "./droplet_ffi"
     },
     {
       "name": "transform",
