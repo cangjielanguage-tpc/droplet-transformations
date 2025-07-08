@@ -490,7 +490,7 @@ public class DecodeJob <: DropletThread<Option<InputStream>> & FetcherReadyCallb
     private func decodeFromRetrievedData(): Unit {
         if (currentData.getOrThrow() is InputStream) {
             let data: Any = currentData.getOrThrow()
-            let rs: Option<Any> = decodeFromData<Any>(Some(data), currentDataSource.getOrThrow())
+            let rs: Option<Any> = decodeFromData(data, currentDataSource.getOrThrow())
             if(let Some(i) <- rs){
                 let rr: Any = i
                  if (rr is ByteBufferes) {
@@ -605,8 +605,8 @@ public class DecodeJob <: DropletThread<Option<InputStream>> & FetcherReadyCallb
         isCallbackNotified = true
     }
 
-    private func decodeFromDataSub<DATA>(dataSource: DataSource, arrData: Array<UInt8>): Option<DATA> {
-        var result = Option<DATA>.None
+    private func decodeFromDataSub(dataSource: DataSource, arrData: Array<UInt8>): Option<Any> {
+        var result = Option<Any>.None
         let decoders: ArrayList<ResourceDecoder<Array<UInt8>, Drawable>> = decodeHelper.getDrawableResourceDecoders()
 
         var i: Int64 = decoders.size - 1
@@ -617,13 +617,13 @@ public class DecodeJob <: DropletThread<Option<InputStream>> & FetcherReadyCallb
                 if (d is GifDrawable) {
                     let dd: GifDrawable = (d as GifDrawable).getOrThrow()
                     //GIF没有写resource本地
-                    result = dd as DATA
+                    result = dd as Any
                 } else if (d is PixelMapDrawable) {
                     let dd: PixelMapDrawable = (d as PixelMapDrawable).getOrThrow()
                     let res: DropletResource<PixelMapDrawable> = onResourceDecoded<PixelMapDrawable>(dataSource,
                         PixelMapDrawableResource.obtain(dd))
 
-                    result = res.get() as DATA
+                    result = res.get() as Any
                 } else {
                     throw DropletException("Drawable type error")
                 }
@@ -635,8 +635,8 @@ public class DecodeJob <: DropletThread<Option<InputStream>> & FetcherReadyCallb
         return result
     }
 
-    private func decodeFromDataSubTwo<DATA>(dataSource: DataSource, d: Any): Option<DATA> {
-        var result = Option<DATA>.None
+    private func decodeFromDataSubTwo(dataSource: DataSource, d: Any): Option<Any> {
+        var result = Option<Any>.None
 
         let decoder: GifDecoder = (d as GifDecoder).getOrThrow()
         let gifFrameResourceDecoder: GifFrameResourceDecoder = GifFrameResourceDecoder()
@@ -649,18 +649,18 @@ public class DecodeJob <: DropletThread<Option<InputStream>> & FetcherReadyCallb
         let data: Array<UInt8> = Array<UInt8>(Int64(decodeResource.getPixelBytesNumber()), repeat: 0)
         decodeResource.readPixelsToBuffer(data)
         bas.write(data)
-        result = bas as DATA
+        result = bas as Any
         return result
     }
 
     var isByteArrayStream: Bool = false
 
-    private func decodeFromData<DATA>(data: Option<DATA>, dataSource: DataSource): Option<DATA> {
+    private func decodeFromData(data: Option<Any>, dataSource: DataSource): Option<Any> {
         try {
             if(data.isNone()){
                 return None
             }
-            var result: Option<DATA> = None
+            var result: Option<Any> = None
 
             let d: Any = data.getOrThrow()
 
@@ -669,7 +669,7 @@ public class DecodeJob <: DropletThread<Option<InputStream>> & FetcherReadyCallb
                 isByteArrayStream = d is ByteBufferes
                 // asFile downloadOnly
                 if (this.transformationKey.tType == TransformationKey.TRANSFORMATION_INPUTSTREAM) {
-                    return (inputStream as DATA)
+                    return (inputStream as Any)
                 }
 
                 var size = match (inputStream as Seekable) {
@@ -707,7 +707,7 @@ public class DecodeJob <: DropletThread<Option<InputStream>> & FetcherReadyCallb
                                 decodeHelper.getOptions())
                             let res: DropletResource<PixelMap> = onResourceDecoded<PixelMap>(dataSource,
                                 PixelMapResource.obtain(d))
-                            result = res.get() as DATA
+                            result = res.get() as Any
                             break
                         }
                         i--

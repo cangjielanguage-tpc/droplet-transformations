@@ -50,14 +50,14 @@ public class RequestFutureTarget<R> <: FutureTarget<R> & RequestListener<R> {
   }
 
    func start(): Unit {
-      this.future = Some(spawn {
+      this.future = spawn {
           mon.lock()
           while (flag) {
             mon.wait()
           }
           mon.unlock()
           return resource
-      })
+      }
   }
 
   public func onLoadStarted(_: Option<CJResourceDrawable>): Unit {
@@ -120,13 +120,13 @@ public class RequestFutureTarget<R> <: FutureTarget<R> & RequestListener<R> {
       let r = (resource as ByteBufferes).getOrThrow().clone()
       this.resource = (r as R)
     } else if(resource is GifDrawable) {
-      this.resource = Some(resource)
+      this.resource = resource
     } else if(resource is PixelMapDrawable) {
-      this.resource = Some(resource)
+      this.resource = resource
     } else if(resource is PixelMap) {
-      this.resource = Some(resource)
+      this.resource = resource
     } else {
-      this.resource = Some(resource)
+      this.resource = resource
     }
     
     mon.lock()

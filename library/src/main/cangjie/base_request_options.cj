@@ -657,13 +657,13 @@ public open class BaseRequestOptions<T> <: AnyRequestOptions where T <: BaseRequ
     }
 
     func placeholder(res: AppResource): T {
-        this.placeholderDrawable = Some(CJResourceDrawable(res))
+        this.placeholderDrawable = CJResourceDrawable(res)
         fields |= PLACEHOLDER
         return self();
     }
 
     func error(res: AppResource): T {
-        this.errorPlaceholder = Some(CJResourceDrawable(res))
+        this.errorPlaceholder = CJResourceDrawable(res)
         fields |= ERROR_PLACEHOLDER
         return self();
     }

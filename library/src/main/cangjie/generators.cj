@@ -131,8 +131,8 @@ public class SourceGenerator <: DataFetcherGenerator & FetcherReadyCallback {
 
             let cache: Option<DropletFile> = diskCache.get(newOriginalKey)
             if(cache.isSome()){
-                originalKey = Some(newOriginalKey)
-                sourceCacheGenerator = Some(DataCacheGenerator(helper, this))
+                originalKey = newOriginalKey
+                sourceCacheGenerator = DataCacheGenerator(helper, this)
                 // We were able to write the data to cache.
                 return true
             }else{

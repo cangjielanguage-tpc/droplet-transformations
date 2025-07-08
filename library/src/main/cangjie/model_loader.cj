@@ -77,7 +77,7 @@ public class StringModelLoader <: ModelLoader {
     private func getImageFromFile(path: String): Option<InputStream> {
         let f: File = File(path, ReadWrite)
         if (f.canRead()) {
-            return Some(f)
+            return f
         }
         return None
     }
@@ -119,7 +119,7 @@ public class StringModelLoader <: ModelLoader {
             return None
         }
         Emitter.off(path)
-        return Some(resp.body)
+        return resp.body
     }
 
     private func getImageFromRawFile(rawFileName: String): Option<InputStream> {

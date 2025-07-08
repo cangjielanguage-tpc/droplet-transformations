@@ -12,7 +12,7 @@ public class DropletOption<T> <: AnyDropletOptionKey & Equatable<DropletOption<T
 
     private init(key: String, defaultValue: T, cacheKeyUpdater: CacheKeyUpdater<T>) {
         super(key)
-        this.defaultValue = Some(defaultValue)
+        this.defaultValue = defaultValue
         this.cacheKeyUpdater = cacheKeyUpdater
         this.keyBytes = key.toArray()
     }

@@ -133,7 +133,7 @@ public class DiskLruCache {
 
             // If we ended on a truncated line, rebuild the journal before appending to it.
 
-            journalWriter = Some(journalFile.getStringWriter());
+            journalWriter = journalFile.getStringWriter();
         } catch (e:Exception){
             AppLog.error(e.toString())
         }
@@ -180,7 +180,7 @@ public class DiskLruCache {
             entry.getOrThrow().currentEditor = None;
             entry.getOrThrow().setLengths(parts);
         } else if (secondSpaceFalse && firstSpace == DIRTY.size && line.startsWith(DIRTY)) {
-            entry.getOrThrow().currentEditor = Some(Editor(entry.getOrThrow(), this.valueCount));
+            entry.getOrThrow().currentEditor = Editor(entry.getOrThrow(), this.valueCount);
         } else if (secondSpaceFalse && firstSpace == READ.size && line.startsWith(READ)) {
             // This work was already done by calling lruEntries.get().
         } else {
@@ -255,7 +255,7 @@ public class DiskLruCache {
             renameToStatic(journalFileTmp, journalFile, false)
             journalFileBackup.delete()
 
-            journalWriter = Some(journalFile.getStringWriter())
+            journalWriter = journalFile.getStringWriter()
         }
     }
 
@@ -313,7 +313,7 @@ public class DiskLruCache {
                 executorServiceSubmit()
             }
 
-            return Some(Value(key, entry.getOrThrow().sequenceNumber, entry.getOrThrow().cleanFiles, entry.getOrThrow().lengths, this));
+            return Value(key, entry.getOrThrow().sequenceNumber, entry.getOrThrow().cleanFiles, entry.getOrThrow().lengths, this);
         }
     }
 

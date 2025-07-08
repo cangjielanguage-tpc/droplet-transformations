@@ -81,7 +81,7 @@ public class RequestBuilder<TranscodeType> <: BaseRequestOptions<RequestBuilder<
         o = o.setDiskCacheStrategy(DiskCacheStrategyDATA(), o)
         o = o.skipMemoryCache(true, o)
 
-        DOWNLOAD_ONLY_OPTIONS = Some(o)
+        DOWNLOAD_ONLY_OPTIONS = o
     }
 
     init(transcodeTypeClass: TransformationKey, other: AnyRequestBuilder) {
@@ -158,7 +158,7 @@ public class RequestBuilder<TranscodeType> <: BaseRequestOptions<RequestBuilder<
         if (getIsAutoCloneEnabled()) {
             return cloneBuilder().loadGeneric(model);
         }
-        this.model = Some(model)
+        this.model = model
         this.isModelSet = true
         return selfOrThrowIfLocked();
     }
@@ -375,7 +375,7 @@ public class RequestBuilder<TranscodeType> <: BaseRequestOptions<RequestBuilder<
         var errorRequestCoordinator: ErrorRequestCoordinator = ErrorRequestCoordinator(requestLock, parentCoordinator);
 
         if (let Some(x) <- errorBuilder) {
-            var parentCoordinator2: Option<RequestCoordinator> = Some(errorRequestCoordinator);
+            var parentCoordinator2: Option<RequestCoordinator> = errorRequestCoordinator;
 
             mainRequest = buildThumbnailRequestRecursive<Y2>(requestLock, target, targetListener, parentCoordinator2,
                 priority, overrideWidth, overrideHeight, requestOptions)

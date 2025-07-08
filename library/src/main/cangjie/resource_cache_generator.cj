@@ -25,7 +25,7 @@ public class ResourceCacheGenerator <: DataFetcherGenerator {
     let transformationKey: TransformationKey = helper.getTransformationKey()
     // 查询缓存
     let a = helper.getTransformation(transformationKey)
-    currentKey = Some(ResourceCacheKey( // NOPMD AvoidInstantiatingObjectsInLoops
+    currentKey = ResourceCacheKey( // NOPMD AvoidInstantiatingObjectsInLoops
                 helper.getArrayPool(),
                 ModelKey(helper.getModel()),
                 helper.getSignature(),
@@ -33,7 +33,7 @@ public class ResourceCacheGenerator <: DataFetcherGenerator {
                 helper.getHeight(),
                 helper.getTransformation(transformationKey).getOrThrow(),
                 transformationKey,
-                helper.getOptions()));
+                helper.getOptions());
 
         cacheFile = helper.getDiskCache().get(currentKey.getOrThrow());
 
@@ -56,7 +56,7 @@ public class ResourceCacheGenerator <: DataFetcherGenerator {
   }
 
    func onDataReady(data: Any): Unit {
-      cb.onDataFetcherReady(sourceKey.getOrThrow(), Some(data), DataSource.RESOURCE_DISK_CACHE);
+      cb.onDataFetcherReady(sourceKey.getOrThrow(), data, DataSource.RESOURCE_DISK_CACHE);
     }
 
    func onLoadFailed(_: DropletException): Unit {

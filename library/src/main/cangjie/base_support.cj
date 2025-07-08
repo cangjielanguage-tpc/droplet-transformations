@@ -97,7 +97,7 @@ public class DropletFile <: DropletAny<DropletFile> {
 
     public init(file: File) {
         this.filePath = file.info.path
-        this.file = Some(file)
+        this.file = file
     }
 
     public init(path: String) {

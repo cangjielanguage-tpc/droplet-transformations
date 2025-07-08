@@ -14,7 +14,7 @@ public class ArrayDeque<K> {
 
     func poll(): Option<K> {
         if(list.size > 0) {
-            return Some(list[0])
+            return list[0]
         }
         return None
     }

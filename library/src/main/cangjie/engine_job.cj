@@ -146,12 +146,12 @@ public class EngineJob <: DecodeJobCallback & Equatable<EngineJob> {
             } else if (hasResource) {
                 throw IllegalStateException("Already have resource");
             }
-            engineResource = Some(engineResourceFactory.buildAny(
+            engineResource = engineResourceFactory.buildAny(
                                 resource.getOrThrow(),
                                 isCacheable, 
                                 key.getOrThrow(),
                                 resourceListener, 
-                                resourceTypeClass));
+                                resourceTypeClass);
 
             // Hold on to resource for duration of our callbacks below so we don't recycle it in the
             // middle of notifying if it synchronously released by one of the callbacks. Acquire it under
@@ -166,7 +166,7 @@ public class EngineJob <: DecodeJobCallback & Equatable<EngineJob> {
             localResource = engineResource.getOrThrow();
         }
 
-        engineJobListener.onEngineJobComplete(this, localKey, Some(localResource));
+        engineJobListener.onEngineJobComplete(this, localKey, localResource);
 
         //最后的渲染
         for (entry in copy) {

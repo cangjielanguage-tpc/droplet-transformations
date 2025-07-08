@@ -32,7 +32,7 @@ public class DataCacheGenerator <: DataFetcherGenerator {
                 cacheFile = helper.getDiskCache().get(originalKey);
                 if(let Some(i) <- cacheFile){
                     let outStream: ByteBufferes = i.toByteBuffer()
-                    cb.onDataFetcherReady(ModelKey(helper.getModel()), Some(outStream), DataSource.DATA_DISK_CACHE);
+                    cb.onDataFetcherReady(ModelKey(helper.getModel()), outStream, DataSource.DATA_DISK_CACHE);
                     return true
                 }
                 return false

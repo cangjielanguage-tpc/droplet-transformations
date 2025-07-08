@@ -21,7 +21,7 @@ public class LockedResource<Z> <: DropletResource<Z> {
   private func initLockedResource(toWrap: DropletResource<Z>): Unit {
     isRecycled = false;
     isLocked = true;
-    this.toWrap = Some(toWrap);
+    this.toWrap = toWrap;
   }
 
   private func release(): Unit {

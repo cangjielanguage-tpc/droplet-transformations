@@ -53,7 +53,7 @@ public abstract class Model <: DropletAny<Model> {
     }
 
     init(decoder: GifDecoder) {
-        this.decoder = Some(decoder)
+        this.decoder = decoder
         this.modelType = ModelType.GIFDECODER
     }
 

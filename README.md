@@ -85,8 +85,7 @@ import ohos.component.*
 import ohos.state_manage.*
 import ohos.state_macro_manage.*
 
-import cj_res_entry.app
-import droplet.droplet.*
+import droplet.*
 import transform.*
 
 @Entry
@@ -104,12 +103,12 @@ class TestCase {
     )
 
     protected open func aboutToAppear() {
-        Droplet.get(globalAbilityContext.getOrThrow()).onAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致,
+        Droplet.get(getStageContext(globalAbilityContext.getOrThrow())).onAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致,
         //组件没设置label,就调用空参的onAppear
     }
 
     protected open func aboutToDisappear() {
-        Droplet.get(globalAbilityContext.getOrThrow()).onDisAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致
+        Droplet.get(getStageContext(globalAbilityContext.getOrThrow())).onDisAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致
         //组件没设置label,就调用空参的onDisAppear
     }
 
@@ -123,7 +122,7 @@ class TestCase {
 
                     if (flag) {
                         DropletImageComponent(
-                            globalContext: globalAbilityContext.getOrThrow(),
+                            globalContext: getStageContext(globalAbilityContext.getOrThrow()),
                             dropletOption: option,
                         )
                     }
