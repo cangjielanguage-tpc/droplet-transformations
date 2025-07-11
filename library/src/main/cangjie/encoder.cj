@@ -66,7 +66,7 @@ public class PixelMapDrawableEncoder <: ResourceEncoder<PixelMapDrawable> {
             let imagePacker : ImagePacker = createImagePacker()
             let path = file.filePath.toString()
             let tempFile = FileFs.open(path,mode:CREATE.mode|WRITE_ONLY.mode)
-            let packingOption = PackingOption("image/jpeg",98)
+            let packingOption = PackingOption("image/png",100)
             try{
                 imagePacker.packToFile(pixelMap, IntNative(tempFile.fd), packingOption)
             }catch(e:Exception){
