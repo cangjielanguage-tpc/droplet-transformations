@@ -14,5 +14,6 @@
 **/*.cj.macrocall
 **/ability_mainability_entry.cj
 **/module_**_entry.cj
-/oh-package-lock.json5
-entry/src/main/cangjie/cjpm.lock
+**/IDL_Dependencies_List~
+**/build-script-cache
+oh-package-lock.json5

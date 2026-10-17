@@ -1,0 +1,47 @@
+name: "维护|Maintenance"
+description: "当您需要进行版本升级等维护类工作时，请使用此模板。 Please use this template for maintenance work such as version upgrades."
+title: "[Maintenance]: "
+labels: ["maintenance"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢参与社区维护工作。 | Thanks for contributing to community maintenance.
+  - type: textarea
+    attributes:
+      label: "维护目标 | Maintenance objective"
+      description: "请描述本次维护的目标，例如版本升级、依赖更新、配置调整等： | Please describe the objective of this maintenance, such as version upgrade, dependency update, configuration adjustment, etc."
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "升级来源与目标版本 | Source and target versions"
+      description: "请填写当前版本与目标版本（如适用）： | Please provide the current version and the target version (if applicable)."
+      placeholder: "from: vX.Y.Z\nto: vX.Y.Z"
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: "变更内容 | Changes involved"
+      description: "请描述本次维护涉及的变更内容，如新增/废弃接口、破坏性变更、适配改动等： | Please describe the changes involved, such as added/deprecated APIs, breaking changes, adaptation changes, etc."
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "影响范围与风险 | Impact and risks"
+      description: "请描述本次维护的影响范围、兼容性风险及回退方案： | Please describe the impact scope, compatibility risks, and rollback plan."
+    validations:
+      required: false
+  - type: textarea
+    id: version
+    attributes:
+      label: "涉及的分支版本 | Branch versions involved"
+      description: "请填写涉及的分支版本： | Please provide the involved branch versions."
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "验证方式 | Verification plan"
+      description: "请描述升级或维护后的验证方式，如构建、测试用例、回归范围等： | Please describe how the upgrade or maintenance will be verified, such as build, test cases, regression scope, etc."
+    validations:
+      required: false

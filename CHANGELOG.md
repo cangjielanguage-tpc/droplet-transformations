@@ -1,3 +1,9 @@
+## 2.0.0
+适配ohos 6.1.1 Release版本
+
+## 1.0.0
+适配ohos 5.1.0 Release版本 
+
 ## 0.0.1
 支持高亮(BrightnessFilter)
 

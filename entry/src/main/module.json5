@@ -5,16 +5,17 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "phone"
+      "phone",
+      "tablet",
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
-    "srcEntry": "ohos_app_cangjie_entry.MyAbilityStage",
     "requestPermissions": [
       {
         "name": "ohos.permission.INTERNET"
       }
     ],
+    "srcEntry": "ohos_app_cangjie_entry.MyAbilityStage",
     "abilities": [
       {
         "name": "EntryAbility",
