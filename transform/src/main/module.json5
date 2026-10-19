@@ -3,7 +3,8 @@
     "name": "transform",
     "type": "har",
     "deviceTypes": [
-      "default"
+      "default",
+      "tablet",
     ]
   }
 }

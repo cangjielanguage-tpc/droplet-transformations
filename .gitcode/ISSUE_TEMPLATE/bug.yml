@@ -1,0 +1,57 @@
+name: "缺陷反馈|Bug"
+description: "当您发现了一个缺陷，需要向社区反馈时，请使用此模板。 Please use this template when you find a bug and want to report it to the community."
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢对仓颉社区的支持与关注，欢迎反馈缺陷。 | Thanks for your support and attention to the community. We welcome feedback on any issues.
+  - type: textarea
+    attributes:
+      label: "发生了什么问题？ | Describe the issue that occurred."
+      description: "提供尽可能多的信息描述产生了什么问题： | Provide as much information as possible describing what issue occurred."
+      placeholder: ""
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "期望行为是什么？ | What is the expected behavior?"
+      description: "描述期望行为或效果应如何： | Describe what the expected behavior or effect should be."
+      placeholder: ""
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "如何复现该缺陷 | How to reproduce the bug"
+      description: "提供尽可能多的信息描述如何复现该缺陷，如最小可复现用例代码，错误行为截图等： | Provide as much information as possible on how to reproduce the bug, such as a minimal reproducible code example, screenshots of the error behavior, etc."
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "系统环境 | System environment"
+      description: "请提供操作系统、CPU 架构等环境信息： | Please provide system environment information such as OS and CPU architecture."
+      placeholder: "OS: \nCPU: "
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: "其他补充信息 | Additional information"
+      description: "补充下其他您认为需要提供的信息： | Add any other information you think is necessary to provide."
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: "编译器版本信息 | compiler version information"
+      description: "请将 `cjc / deveco / cangjie-plugin` 版本信息填写在下方： | Please provide `cjc / deveco / cangjie-plugin` information."
+      placeholder: ""
+    validations:
+      required: true
+  - type: textarea
+    id: version
+    attributes:
+      label: "branch / tag 信息 | branch / tag information"
+      description: "在哪些版本存在该缺陷？ | In which versions does this bug exist?"
+      placeholder: ""
+    validations:
+      required: true

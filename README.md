@@ -3,9 +3,9 @@
 </div>
 
 <p align="center">
-<img alt="" src="https://img.shields.io/badge/release-v0.0.1-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/release-v2.0.0-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/build-pass-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjc-v0.53.18-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/cjc-v1.1.3-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/project-open-brightgreen" style="display: inline-block;" />
 </p>
 
@@ -85,8 +85,7 @@ import ohos.component.*
 import ohos.state_manage.*
 import ohos.state_macro_manage.*
 
-import cj_res_entry.app
-import droplet.droplet.*
+import droplet.*
 import transform.*
 
 @Entry
@@ -104,12 +103,12 @@ class TestCase {
     )
 
     protected open func aboutToAppear() {
-        Droplet.get(globalAbilityContext.getOrThrow()).onAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致,
+        Droplet.get(getStageContext(globalAbilityContext.getOrThrow())).onAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致,
         //组件没设置label,就调用空参的onAppear
     }
 
     protected open func aboutToDisappear() {
-        Droplet.get(globalAbilityContext.getOrThrow()).onDisAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致
+        Droplet.get(getStageContext(globalAbilityContext.getOrThrow())).onDisAppear("TestCase") //onAppear和onDisAppear一起使用或一起不使用,参数和组件的label保持一致
         //组件没设置label,就调用空参的onDisAppear
     }
 
@@ -123,7 +122,7 @@ class TestCase {
 
                     if (flag) {
                         DropletImageComponent(
-                            globalContext: globalAbilityContext.getOrThrow(),
+                            globalContext: getStageContext(globalAbilityContext.getOrThrow()),
                             dropletOption: option,
                         )
                     }
@@ -146,9 +145,20 @@ load成功
 
 ## 约束与限制
 
-DevEco Studio (5.0.9.100)
-Cangjie Support Plugin 5.0.9.100
-Cangjie Compiler: 0.53.18
+在下述版本验证通过:
+
+| 编号 | 依赖构建工具                                       | 版本号       |
+|----|----------------------------------------------|-----------|
+| 1  | **DevEco Studio**                            | 6.1.1.280 |
+| 2  | **cjc**                                      | v1.1.3    |
+| 3  | **DevEco Studio-Cangjie Plugin 6.1.1 Beta1** | 6.1.1.280 |
+| 4  | **compatibility-sdk-6.1.1.280**              | 6.1.1.280 |
+
+transform依赖三方库：
+
+| 编号 | 依赖三方库         | 版本号      |
+  |----|---------------|----------|
+| 1  | stdx          | v1.1.3.1 |
 
 
 ## 开源协议

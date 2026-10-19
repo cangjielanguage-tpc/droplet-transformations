@@ -1,0 +1,10 @@
+/node_modules
+/oh_modules
+/.preview
+/build
+/.cxx
+/.test
+**/IDL_Dependencies_List~
+**/build-script-cache
+BuildProfile.ets
+cjpm.lock
